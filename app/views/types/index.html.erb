@@ -1,0 +1,11 @@
+<h1>Todos los tipos</h1>
+
+<%= @tipos %>
+
+<hr />
+
+<% @tipos.each do |t| %>
+<p>
+	<%= t.id %> - <%= t.description%>
+</p>
+<% end%>

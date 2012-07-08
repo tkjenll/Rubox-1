@@ -1,0 +1,13 @@
+<h1>Todos los proyectos</h1>
+
+<%= @Projects %>
+<br />
+<%= @param.to_s %>
+
+<hr />
+
+<% @Projects.each do |p| %>
+<p>
+	<%= p.id %> - <%= p.name%> - <%= link_to 'Mostrar', p %> - <%= link_to 'Eliminar', p, confirm: 'Desea eliminar el proyecto?', method: :delete %>
+</p>
+<% end%>
