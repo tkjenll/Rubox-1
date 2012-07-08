@@ -6,7 +6,7 @@ Rubox::Application.routes.draw do
   # get "projects/index"
   # get "project/new"
 
-  resources :projects, :types
+  resources :projects, :types, :users
 
   # The priority is based upon order of creation:
   # first created -> highest priority.

@@ -1,6 +1,11 @@
-<h1>User#index</h1>
+<h1>Usuarios</h1>
 
-<%= @msg %>
-<% i = 2%>
-<p>Find me in app/views/user/index.html.erb</p>
-<%= @nose%>
+<table>
+	<tr><th>Usuario</th><th>Login</th></tr>
+<% @users.each do |u| %>
+<tr>
+	<td><%= u.name %></td>
+	<td><%= u.login %></td>
+</tr>
+<% end %>
+</table>
