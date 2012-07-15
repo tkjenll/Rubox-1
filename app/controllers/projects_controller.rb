@@ -64,11 +64,13 @@ class ProjectsController < ApplicationController
   end
 
   def show
-    @project = Project.find(params[:id])
+    @rtdo = User.joins(:projects).joins(:types).select("projects.*, types.*").where("permissions.user_id = " + params[:user_id].to_s).uniq
 
     respond_to do |format|
       format.html # show.html.erb
-      format.json { render json: @proyect }
+      format.json { render json: @rtdo }
     end
   end
+  
+  
 end
