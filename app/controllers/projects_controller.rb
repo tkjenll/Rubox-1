@@ -19,14 +19,33 @@ class ProjectsController < ApplicationController
   end
 
   def create
-    @project = Project.new(params[:project])     
+    #muestra los parametros en la consola del server
+    puts params
 
+    @project = Project.new(params[:project])
+    path = params[:path]
+    userid = params[:user_id].to_i
+    
+
+    @per = Permission.new(:path => path)
+    @per.user_id = userid
+    @per.type_id = 1
+
+    
     respond_to do |format|
       if @project.save
-        #si se guardo en la base de datos, creo el repositorio en el disco
-        Git.init("/var/cache/git/" + @project.name)
-        format.html { redirect_to @project, notice: 'Proyecto creado correctamente' }
-        format.json { render json: @project, status: :created, location: @project }
+        #asigno el id del proyecto al permiso de acceso
+        @per.project_id = @project.id
+        if @per.save
+          #si se guardo en la base de datos, creo el repositorio en el disco
+          Git.init("/var/cache/git/" + @project.name)
+
+          format.html { redirect_to @project, notice: 'Proyecto creado correctamente' }
+          format.json { render json: @project, status: :created, location: @project }
+        else
+          format.html { render action: "new" }
+          format.json { render json: @project.errors, status: :unprocessable_entity }
+        end
       else
         format.html { render action: "new" }
         format.json { render json: @project.errors, status: :unprocessable_entity }
@@ -37,7 +56,7 @@ class ProjectsController < ApplicationController
   def destroy
     @project = Project.find(params[:id])
     @project.destroy
-    
+
     respond_to do |format|
       format.html { redirect_to projects_url }
       format.json { head :no_content }
