@@ -1,0 +1,41 @@
+// Place all the styles related to the sessions controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+#divlogin {
+  width: 200px;
+  margin: 40px auto;
+  padding: 20px;
+  background: #e70000;
+  border-radius: 10px;
+/*  border-left: 1px solid #8a8a8a;
+  border-top : 1px solid #8a8a8a;
+  border-right: 2px solid black;
+  border-bottom: 2px solid black;
+*/  color: white;
+  -webkit-box-shadow: 6px 7px 3px #333;
+}
+
+#flashalert, #flashnotice {
+  font-weight: bold;
+  font-size: 12px;
+  margin-bottom: 15px;
+}
+
+p.label {
+    font-size: 12px; 
+    margin: 0px;  
+}
+
+p.txt {
+  margin: 5px 0px;
+}
+
+p.txt input {
+  width: 196px;
+  border-radius: 5px;
+}
+
+.actions {
+  margin-top: 25px;
+}

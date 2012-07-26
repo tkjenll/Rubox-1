@@ -1,4 +1,7 @@
 class UsersController < ApplicationController
+  
+  http_basic_authenticate_with :name => "m", :password => "m"
+  
   def index
     @users = User.all
     
@@ -27,8 +30,16 @@ class UsersController < ApplicationController
   end
   
    def create
-    @user = User.new(params[:user])
-
+    puts params
+    user = params[:user]
+    puts user
+    @user = User.new
+    @user.email = user["email"]
+    @user.password = user["password"]
+    @user.password_confirmation = user["password_confirmation"]
+    @user.name = user["name"]
+    @user.login = user["login"]
+   
     respond_to do |format|
       if @user.save
         format.html { redirect_to @user, notice: 'User was successfully created.' }
