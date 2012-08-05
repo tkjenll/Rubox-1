@@ -1,5 +1,6 @@
 class User < ActiveRecord::Base
-  attr_accessible :login, :name, :email, :password_hash, :password_salt
+  # se quita los parametros de password_hash y password_salt por cuestiones de seguridad
+  attr_accessible :login, :name, :email#, :password_hash, :password_salt
   
   validates :login, :uniqueness => true, :presence => true
   
@@ -24,6 +25,7 @@ class User < ActiveRecord::Base
   def self.authenticate(login, password)  
     user = find_by_login(login)  
     if user && user.password_hash == BCrypt::Engine.hash_secret(password, user.password_salt)  
+      puts user
       user  
     else  
       nil  

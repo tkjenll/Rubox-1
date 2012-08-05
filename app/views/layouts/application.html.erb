@@ -8,8 +8,17 @@
 	</head>
 	<body>
 
-		
-
+		<% if (params[:controller] != "sessions" && params[:controller] != "users") %>
+			<div id="user_nav">  
+				<%  user = current_user
+					if user %>
+					Bienvenido <%= user.name %> - <%= link_to "Salir", logout_path %>
+				<% else %>
+					<%= link_to "Crear usuario", signup_path %> - <%= link_to "Iniciar sesión", login_path %>
+				<% end %>
+			</div>
+		<% end %>
+			
 		<%= yield %>
 
 	</body>

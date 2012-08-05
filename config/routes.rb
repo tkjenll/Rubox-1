@@ -1,6 +1,7 @@
 Rubox::Application.routes.draw do
   
   get "login" => "sessions#new", :as => "login"
+  get "logout" => "sessions#destroy", :as => "logout"
 
   # get "welcome/index"
 
@@ -62,7 +63,8 @@ Rubox::Application.routes.draw do
 
   # You can have the root of your site routed with "root"
   # just remember to delete public/index.html.
-   root :to => 'sessions#new'
+  # root :to => 'sessions#new'
+  root :to => 'application#index'
 
 # See how all your routes lay out with "rake routes"
 

@@ -2,17 +2,13 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
-#divlogin {
+#divlogin, #divsingup {
   width: 200px;
   margin: 40px auto;
   padding: 20px;
   background: #e70000;
   border-radius: 10px;
-/*  border-left: 1px solid #8a8a8a;
-  border-top : 1px solid #8a8a8a;
-  border-right: 2px solid black;
-  border-bottom: 2px solid black;
-*/  color: white;
+  color: white;
   -webkit-box-shadow: 6px 7px 3px #333;
 }
 
