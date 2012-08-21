@@ -7,19 +7,31 @@
 		<%= csrf_meta_tags %>
 	</head>
 	<body>
-
+		<div id="wrapper">
 		<% if (params[:controller] != "sessions" && params[:controller] != "users") %>
-			<div id="user_nav">  
-				<%  user = current_user
-					if user %>
+			 
+				<%  user = current_user %>
+				<% if user %>
+				<div id="nav">
+					<div id="logo"></div>
+					<div id="user"> 
 					Bienvenido <%= user.name %> - <%= link_to "Salir", logout_path %>
+					</div>
+					<div id="menu">
+					<ul>
+						<li><%= link_to "Ver Proyectos", projects_path %></li>
+						<li><%= link_to "Crear Nuevo", new_project_path %></li>
+					</ul>
+					</div>
+				</div>	
 				<% else %>
 					<%= link_to "Crear usuario", signup_path %> - <%= link_to "Iniciar sesión", login_path %>
+					<h1>Bienvenido a Rubox</h1>
+					<p>Inicie session o cree un usuario para comenzar</p>
 				<% end %>
-			</div>
 		<% end %>
-			
+		
 		<%= yield %>
-
+		</div>
 	</body>
 </html>

@@ -15,4 +15,42 @@
 
 body {
 	background: #c8c8c8;
+	margin: 0px;
 }
+
+#wrapper {
+  width: 100%;
+}
+
+#nav {
+  padding: 10px 20px;
+  background: #e70000;
+  height: 25px;
+}
+
+#logo {
+  background-image: url("/assets/logo.png");
+  width: 90px;
+  height: 25px;
+  float: left;
+  margin: 0px;
+}
+
+#user {
+  float: right;
+}
+
+#menu {
+  margin-left: 120px; 
+}
+#menu ul{
+  margin:0;
+  padding:0;
+}
+
+#menu li {
+  display:inline;
+  overflow:hidden;
+}
+
+

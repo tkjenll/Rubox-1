@@ -1,6 +1,8 @@
 class ProjectsController < ApplicationController
   def index
-    @Projects = Project.all
+    user = current_user
+    puts user.name
+    @Projects = Project.joins(:users).where("users.id = " + user.id.to_s)
     @param = params
 
     respond_to do |format|
@@ -64,11 +66,13 @@ class ProjectsController < ApplicationController
   end
 
   def show
-    @rtdo = User.joins(:projects).joins(:types).select("projects.*, types.*").where("permissions.user_id = " + params[:user_id].to_s).uniq
+    user = current_user
+    puts user.name
+    @project = Project.find(params[:id])
 
     respond_to do |format|
       format.html # show.html.erb
-      format.json { render json: @rtdo }
+      format.json { render json: @project }
     end
   end
   

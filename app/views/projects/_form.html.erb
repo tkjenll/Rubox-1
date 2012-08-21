@@ -13,6 +13,8 @@
 </div>
 <% end %>
 
+<h1>Nuevo Projecto</h1>
+
 <div class="field">
 	<%= project_form.label :name %>
 	<br />
@@ -21,9 +23,14 @@
 <div class="field">
 	<%= project_form.label :description %>
 	<br />
-	<%= project_form.text_area :description %>
+	<%= project_form.text_field :description %>
+</div>
+<div class="field">
+	<%= project_form.label :path %>
+	<br />
+	<%= text_field "path", "path", "size" => 20 %>
 </div>
 <div class="actions">
-	<%= project_form.submit %>
+	<%= project_form.submit(:value => "Crear Projecto") %>
 </div>
 <% end %>
