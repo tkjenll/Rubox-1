@@ -1,5 +1,7 @@
 Rubox::Application.routes.draw do
   
+  get "permission/index"
+
   get "login" => "sessions#new", :as => "login"
   get "logout" => "sessions#destroy", :as => "logout"
 
@@ -10,8 +12,9 @@ Rubox::Application.routes.draw do
   # get "projects/index"
   # get "project/new"
 
-  resources :projects, :types, :users, :sessions
-  get "signup" => "users#new", :as => "signup" 
+  resources :projects, :types, :users, :sessions, :permissions
+  get "signup" => "users#new", :as => "signup"
+
   
 
   # The priority is based upon order of creation:

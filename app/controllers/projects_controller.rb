@@ -2,12 +2,12 @@ class ProjectsController < ApplicationController
   def index
     user = current_user
     puts user.name
-    @Projects = Project.joins(:users).where("users.id = " + user.id.to_s)
+    @pers = Permission.where("user_id = " + user.id.to_s)
     @param = params
 
     respond_to do |format|
       format.html # index.html.erb
-      format.json { render json: @Projects }
+      format.json { render json: @pers }
     end
   end
 
@@ -23,13 +23,15 @@ class ProjectsController < ApplicationController
   def create
     #muestra los parametros en la consola del server
     puts params
+    user = current_user
+    puts user.name
 
     @project = Project.new(params[:project])
     path = params[:path]
-    userid = params[:user_id].to_i
-    
+    userid = user.id.to_i
+    puts
 
-    @per = Permission.new(:path => path)
+    @per = Permission.new(:path => path[:path])
     @per.user_id = userid
     @per.type_id = 1
 
@@ -69,6 +71,7 @@ class ProjectsController < ApplicationController
     user = current_user
     puts user.name
     @project = Project.find(params[:id])
+    @users = User.where("id <> " + user.id.to_s)
 
     respond_to do |format|
       format.html # show.html.erb

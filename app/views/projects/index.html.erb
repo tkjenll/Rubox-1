@@ -2,9 +2,29 @@
 
 
 <hr />
+<table border="1">
+  <tr>
+    <th>
+      ID
+    </th>
+    <th>
+      Nombre
+    </th>
+    <th>
+      Tipo
+    </th>
+    <th>
+      Acciones
+    </th>
+  </tr>
+  <% @pers.each do |p| %>
+    <tr>
+      <td><%= p.project.id %> </td><td> <%= p.project.name %> </td><td> <%= p.type.description %></td> 
+      <td> 
+        <%= link_to 'Mostrar', p.project %> - 
+        <%= link_to 'Eliminar', p.project, confirm: 'Desea eliminar el proyecto?', method: :delete %>
+      </td>
+    </tr>
 
-<% @Projects.each do |p| %>
-<p>
-	<%= p.id %> - <%= p.name%> - <%= link_to 'Mostrar', p %> - <%= link_to 'Eliminar', p, confirm: 'Desea eliminar el proyecto?', method: :delete %>
-</p>
-<% end%>
+  <% end%>
+</table>

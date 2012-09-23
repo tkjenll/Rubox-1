@@ -1,4 +1,12 @@
-
+<p>ID: <%=  @project.id %></p>
 <p>Nombre: <b><%= @project.name %></b></p>
-<p>Descripcion: <i><%= @project.id %></i></p>
+<p>Descripcion: <i><%= @project.description %></i></p>
 
+<p>Dar permiso
+  <%= form_tag('/permissions') do %>
+  <%= select_tag "shared", options_from_collection_for_select(@users, "login", "name") %>
+  <%= select_tag "type", options_from_collection_for_select(Type.where("description <> 'owner'"), "id", "description") %>
+  <%= button_to "Compartir", :action => "new", :form_class => "new-thing" %>
+
+<% end %>
+</p>
