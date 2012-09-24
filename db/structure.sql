@@ -1,6 +1,5 @@
 CREATE TABLE `permissions` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
-  `path` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
   `created_at` datetime NOT NULL,
   `updated_at` datetime NOT NULL,
   `user_id` int(11) DEFAULT NULL,

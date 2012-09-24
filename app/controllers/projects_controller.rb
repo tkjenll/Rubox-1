@@ -27,11 +27,10 @@ class ProjectsController < ApplicationController
     puts user.name
 
     @project = Project.new(params[:project])
-    path = params[:path]
     userid = user.id.to_i
     puts
 
-    @per = Permission.new(:path => path[:path])
+    @per = Permission.new
     @per.user_id = userid
     @per.type_id = 1
 
