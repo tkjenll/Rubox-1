@@ -5,7 +5,13 @@
   <%= form_tag('/permissions') do %>
     Dar permiso
     <%= hidden_field_tag(:project_id, @project.id) %>
-    <%= select_tag "user_login", options_from_collection_for_select(@users, "login", "name") %>
-    <%= select_tag "type", options_from_collection_for_select(Type.where("description <> 'owner'"), "id", "description") %>
+    <%= select_tag "user_id", options_from_collection_for_select(@users, "id", "name") %>
+    <%= select_tag "type_id", options_from_collection_for_select(@types, "id", "description") %>
     <%= submit_tag "Compartir" %>
   <% end %>
+
+    <p>
+      <% @permissions.each do |p| %>
+        <%= p.user.name %> (<%= p.type.description %>),
+      <% end%>
+    </p>

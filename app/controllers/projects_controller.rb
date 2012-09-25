@@ -71,6 +71,9 @@ class ProjectsController < ApplicationController
     puts user.name
     @project = Project.find(params[:id])
     @users = User.where("id <> " + user.id.to_s)
+    @pers = Permission.where("project_id = " + params[:id].to_s + " and user_id = " + user.id.to_s).first
+    @types = Type.where("id > " + @pers.type_id.to_s)
+    @permissions = Permission.where("project_id = " + params[:id].to_s)
 
     respond_to do |format|
       format.html # show.html.erb
