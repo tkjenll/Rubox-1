@@ -41,7 +41,9 @@ class ProjectsController < ApplicationController
         @per.project_id = @project.id
         if @per.save
           #si se guardo en la base de datos, creo el repositorio en el disco
-          Git.init("/var/cache/git/" + @project.name)
+         
+		  #Git.init("/var/cache/git/" + @project.name)
+		  system('git init --bare /var/cache/git/'+@project.name+'.git') #la libreria no permite crear un repositorio bare
 
           format.html { redirect_to @project, notice: 'Proyecto creado correctamente' }
           format.json { render json: @project, status: :created, location: @project }
