@@ -4,7 +4,7 @@ class ProjectsController < ApplicationController
     puts user.name
     @pers = Permission.where("user_id = " + user.id.to_s)
     @param = params
-
+   
     respond_to do |format|
       format.html # index.html.erb
       format.json { render json: @pers }

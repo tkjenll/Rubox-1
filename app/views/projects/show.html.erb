@@ -2,16 +2,37 @@
 <p>Nombre: <b><%= @project.name %></b></p>
 <p>Descripcion: <i><%= @project.description %></i></p>
 
-  <%= form_tag('/permissions') do %>
-    Dar permiso
-    <%= hidden_field_tag(:project_id, @project.id) %>
-    <%= select_tag "user_id", options_from_collection_for_select(@users, "id", "name") %>
-    <%= select_tag "type_id", options_from_collection_for_select(@types, "id", "description") %>
-    <%= submit_tag "Compartir" %>
-  <% end %>
+<%= form_tag('/permissions') do %>
+  Dar permiso
+  <%= hidden_field_tag(:project_id, @project.id) %>
+  <%= select_tag "user_id", options_from_collection_for_select(@users, "id", "name") %>
+  <%= select_tag "type_id", options_from_collection_for_select(@types, "id", "description") %>
+  <%= submit_tag "Compartir" %>
+<% end %>
 
-    <p>
-      <% @permissions.each do |p| %>
-        <%= p.user.name %> (<%= p.type.description %>),
-      <% end%>
-    </p>
+<table>
+  <tr>
+    <th colspan="2">Permisos</th>
+  </tr>
+  <tr>
+    <th>
+      Usuario
+    </th>
+    <th>
+      Permiso
+    </th>
+    <th>
+    </th>
+  </tr>
+  <% @permissions.each do |p| %>
+    <tr>
+      <td><%= p.user.name %> </td>
+      <td><%= p.type.description %></td>
+      <td>
+        <% if p.type.description != 'owner' %>
+          <%= link_to 'Quitar', p, confirm: 'Desea quitar el permiso?', method: :delete %>
+        <% end %>
+      </td>
+    </tr>
+  <% end%>
+</table>
