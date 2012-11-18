@@ -44,6 +44,7 @@ class ProjectsController < ApplicationController
          
 		  #Git.init("/var/cache/git/" + @project.name)
 		  system('git init --bare "/var/cache/git/'+@project.name+'.git"') #la libreria no permite crear un repositorio bare
+		  system('cp /var/cache/git/hooks/* /var/cache/git/'+@project.name+'.git/hooks/') #copio los hook en el repo
 
           format.html { redirect_to @project, notice: 'Proyecto creado correctamente' }
           format.json { render json: @project, status: :created, location: @project }
