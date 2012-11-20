@@ -1,6 +1,6 @@
 <p>ID: <%=  @project.id %></p>
-<p>Nombre: <b><%= @project.name %></b></p>
-<p>Descripcion: <i><%= @project.description %></i></p>
+<p>Nombre: <br /><b><%= @project.name %></b></p>
+<p>Descripcion: <br /><i><%= @project.description %></i></p>
 
 <%= form_tag('/permissions') do %>
   Dar permiso
@@ -10,9 +10,9 @@
   <%= submit_tag "Compartir" %>
 <% end %>
 
-<table>
+<table border="1">
   <tr>
-    <th colspan="2">Permisos</th>
+    <th colspan="3">Permisos</th>
   </tr>
   <tr>
     <th>
