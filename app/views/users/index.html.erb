@@ -1,7 +1,7 @@
 <h1>Usuarios</h1>
 
 <table>
-	<tr><th>Usuario</th><th>Login</th></tr>
+  <tr><th>ID</th><th>Usuario</th><th>Login</th></tr>
 <% @users.each do |u| %>
 <tr>
 	<td><%= u.id %></td>
@@ -10,3 +10,4 @@
 </tr>
 <% end %>
 </table>
+<%= link_to "Atrás", root_path %>

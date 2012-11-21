@@ -14,12 +14,12 @@
 <% end %>
 
 <div id="divsingup"> 
-<h1>Sing Up</h1>  
+<h1>Nuevo</h1>
   <% flash.each do |name, msg| %>
 		<%= content_tag :div, msg, :id => "flash#{name}" %>
 		<% end %>
 <div class="field">
-	<p class="label"><%= f.label :name %></p>
+	<p class="label"><%= f.label :name, "Nombre" %></p>
 	<p class="txt"><%= f.text_field :name %></p>
 </div>
 <div class="field">
@@ -31,15 +31,15 @@
 	<p class="txt"><%= f.text_field :email %></p>
 </div>
 <div class="field">
-	<p class="label"><%= f.label :password %></p>
+	<p class="label"><%= f.label :password, "Contraseña" %></p>
 	<p class="txt"><%= f.password_field :password %></p>
 </div>
 <div class="field">
-	<p class="label"><%= f.label :password_confirmation %>  </p>
+	<p class="label"><%= f.label :password_confirmation, "Confirme contraseña" %>  </p>
     <p class="txt"><%= f.password_field :password_confirmation %>  </p>
 </div>
 <div class="actions">
-	<%= f.submit %> <%= link_to "Back", root_path %>
+	<%= f.submit "Crear usuario" %> <%= link_to "Atrás", root_path %>
 </div>
 
 </div>

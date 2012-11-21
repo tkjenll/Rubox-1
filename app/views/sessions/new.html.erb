@@ -1,7 +1,7 @@
 
 <div id="divlogin">
 
-<h1>Log in</h1>  
+<h1>Iniciar</h1>
   <% flash.each do |name, msg| %>
 		<%= content_tag :div, msg, :id => "flash#{name}" %>
 		<% end %>
@@ -11,9 +11,9 @@
     <p class="txt"><%= text_field_tag :login, params[:login] %></p>  
   </div>  
   <div class="field"> 
-    <p class="label"><%= label_tag :password %> </p> 
+    <p class="label"><%= label_tag :password, "Contraseña" %> </p>
     <p class="txt"><%= password_field_tag :password %>  </p>
   </div>
-  <div class="actions"><%= submit_tag(value="Iniciar sesión") %> <%= link_to "Atrás", root_path %></div>
+  <div class="actions"><%= submit_tag "Iniciar sesión" %> <%= link_to "Atrás", root_path %></div>
 <% end %>  
 </div>
